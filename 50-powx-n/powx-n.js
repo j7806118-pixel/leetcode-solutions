@@ -1,27 +1,21 @@
-/**
- * @param {number} x
- * @param {number} n
- * @return {number}
- */
-var myPow = function(x, n) {
+function myPow(x, n) {
     if (n === 0) return 1;
 
-    let N = n;
-    if (N < 0) {
+    if (n < 0) {
         x = 1 / x;
-        N = -N;
+        n = -n;
     }
 
     let result = 1;
-    let currentProduct = x;
 
-    while (N > 0) {
-        if (N % 2 === 1) {
-            result *= currentProduct;
+    while (n > 0) {
+        if (n % 2 === 1) {
+            result *= x;
         }
-        currentProduct *= currentProduct;
-        N = Math.floor(N / 2);
+
+        x *= x;
+        n = Math.floor(n / 2);
     }
 
     return result;
-};
+}
