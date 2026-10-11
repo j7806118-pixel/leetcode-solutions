@@ -1,14 +1,12 @@
 function climbStairs(n) {
-    if (n <= 2) return n;
+    const dp = new Array(n + 1).fill(0);
 
-    let prev2 = 1; // ways for n = 1
-    let prev1 = 2; // ways for n = 2
+    dp[0] = 1;
+    dp[1] = 1;
 
-    for (let i = 3; i <= n; i++) {
-        let current = prev1 + prev2;
-        prev2 = prev1;
-        prev1 = current;
+    for (let step = 2; step <= n; step++) {
+        dp[step] = dp[step - 1] + dp[step - 2];
     }
 
-    return prev1;
+    return dp[n];
 }
